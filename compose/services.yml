@@ -1,11 +1,9 @@
-version: "2.0"
-
 services:
   ui:
     extends:
       file: ./common.yml
       service: component
-    image: harmonidcaputo/open-balena-ui:${OPENBALENA_UI_VERSION_TAG}
+    image: brutosini/open-balena-ui:latest
     depends_on:
       - postgrest
       - remote
@@ -31,7 +29,7 @@ services:
     extends:
       file: ./common.yml
       service: component
-    image: harmonidcaputo/open-balena-remote:${OPENBALENA_REMOTE_VERSION_TAG}
+    image: brutosini/open-balena-remote:latest
     environment:
       BALENARC_BALENA_URL: ${OPENBALENA_HOST_NAME}
       HOST_MODE: ${OPENBALENA_ADMIN_HOST_MODE}
@@ -55,9 +53,9 @@ services:
     extends:
       file: ./common.yml
       service: component
-    image: harmonidcaputo/open-balena-postgrest:${OPENBALENA_POSTGREST_VERSION_TAG}
+    image: brutosini/open-balena-postgrest:latest
     environment:
-      PGRST_DB_URI: postgres://${OPENBALENA_DB_USERNAME}:${OPENBALENA_DB_PASSWORD}@db.${OPENBALENA_HOST_NAME}:${OPENBALENA_DB_PORT}/resin
+      PGRST_DB_URI: postgres://${OPENBALENA_DB_USERNAME}:${OPENBALENA_DB_PASSWORD}@open-balena-db-1:5432/resin
       PGRST_JWT_SECRET: ${OPENBALENA_JWT_SECRET}
     ports:
       - "8000:8000"

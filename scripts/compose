@@ -23,7 +23,7 @@ fi
 source "${ENV_FILE}"
 
 source "${VERSIONS_FILE}"; docker-compose \
-  --project-name 'openbalena-admin' \
+  --project-name 'open-balena-admin' \
   -f "${BASE_DIR}/compose/services.yml" \
   -f "${CONFIG_DIR}/docker-compose.yml" \
   "$@"
